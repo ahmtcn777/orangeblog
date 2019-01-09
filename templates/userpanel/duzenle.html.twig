@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}
+        {{ app.user.name }} - {{ data[0].title }}
+    {% endblock %}
+    {% block sidebar %}
+        {{  include ('home/_usersidebar.html.twig') }}
+    {% endblock %}
+    {% block content %}
+        <div class="col-sm-9">
+            <div class="blog-post-area">
+                <h2 class="title text-center">Hesabımı Düzenle</h2>
+                <form method="post">
+
+                    <input type="text" name="name" id="name" placeholder="Ad Soyad" class="form-control" value="{{ app.user.name }}" required autofocus>
+                    <br>
+                    <input type="password" name="password" id="password" placeholder="Şifre" class="form-control" value="{{ app.user.password }}" required autofocus>
+                    <br>
+                    <input type="email" name="email" placeholder="Email Address" class="form-control" value="{{ app.user.email }}" readonly>
+                    <br>
+                    <input type="text" name="roles" class="form-control" value="{{ app.user.roles[0] }}" readonly>
+                    <br>
+                    <input type="text" name="status" class="form-control" value="{{ app.user.status }}" readonly>
+                    <button type="submit" class="btn btn-lg btn-primary">Kaydet</button>
+                    <br>
+                    <br>
+                    <br>
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('userpaneledit-form') }}"
+                    >
+                </form>
+            </div>
+        </div>
+    {% endblock %}

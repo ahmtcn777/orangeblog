@@ -1,0 +1,71 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Yazılar{% endblock %}
+
+{% block content %}
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                {{ include('admin/messages.html.twig') }}
+                <h4 class="card-title">Yazılar</h4>
+                <a href="{{ path('admin_article_new') }}" class="btn btn-outline-primary btn-rounded btn-fw">Yeni Yazı Ekle</a>
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Title</th>
+                            <th>Image</th>
+                            <th>Gallery</th>
+                            <th>Status</th>
+                            <th>Userid</th>
+                            <th>Categoryid</th>
+                            <th>Görüntüle</th>
+                            <th>Düzenle</th>
+                            <th>Sil</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for article in articles %}
+                            <tr>
+                                <td>{{ article.id }}</td>
+                                <td>{{ article.title }}</td>
+                                <td>
+                                    <a href="javascript:openWin('{{ path('admin_article_iedit', {'id': article.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=600,height=500');">
+                                        {% if article.image == null %}
+                                            <img src="{{ asset('admin') }}/img/image.png" height="32">
+                                        {% else %}
+                                            <img src="{{ asset('uploads') }}/images/{{ article.image }}" height="32">
+                                        {% endif %}
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="javascript:openWin('{{ path('admin_image_new', {'aid': article.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=600,height=500');">
+                                        <img src="{{ asset('admin') }}/img/gallery.png" height="32">
+                                    </a>
+                                </td>
+                                <td>{{ article.status }}</td>
+                                <td>{{ article.userid }}</td>
+                                <td>{{ article.categoryid }}</td>
+                                <td>
+                                    <a href="{{ path('admin_article_show', {'id': article.id}) }}" class="btn btn-outline-success btn-rounded btn-sm">Görüntüle</a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('admin_article_edit', {'id': article.id}) }}"class="btn btn-outline-info btn-rounded btn-sm">Düzenle</a>
+                                </td>
+                                <td>
+                                    {{ include('admin/article/_delete_form.html.twig') }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="11">no records found</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

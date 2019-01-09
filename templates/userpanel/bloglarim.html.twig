@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ app.user.name }} - {{ data[0].title }}
+{% endblock %}
+{% block sidebar %}
+    {{  include ('home/_usersidebar.html.twig') }}
+{% endblock %}
+{% block content %}
+    <div class="col-sm-9">
+        <div class="blog-post-area">
+            <h2 class="title text-center">Bloglarım</h2>
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Başlık</th>
+                                <th>Kategorisi</th>
+                                <th>Resim</th>
+                                <th>Galeri</th>
+                                <th>Durumu</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for article in articles %}
+                            <tr>
+                                <td>
+                                    <a href="{{ path('article_detail', {'id': article.id}) }}">{{ article.title }}</a>
+                                    </td>
+                                {% for cat in catlist %}
+                                    {% if cat.id == article.categoryid %}
+                                <td>{{ cat.title }}</td>
+                                    {% endif %}
+                                {% endfor %}
+                                <td>
+                                    <a href="javascript:openWin('{{ path('blog_iedit', {'id': article.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=600,height=500');">
+                                        {% if article.image == null %}
+                                            <img src="{{ asset('admin') }}/img/image.png" height="32">
+                                        {% else %}
+                                            <img src="{{ asset('uploads') }}/images/{{ article.image }}" height="32">
+                                        {% endif %}
+
+                                    </a>
+                                </td>
+                                <td>
+                                    <a href="javascript:openWin('{{ path('blog_gallery_add', {'aid': article.id}) }}','','toolbar=no,location=no,directories=0,status=no,top=100,left=200,menuBar=no,scrollBars=no,resizable=no,width=600,height=500');">
+                                        <img src="{{ asset('admin') }}/img/gallery.png" height="32">
+                                    </a>
+                                </td>
+                                <td>
+                                    {% if article.status == "False" %}
+                                        <label style="background-color: #e65251;" class="badge badge-danger">Onay Bekliyor</label>
+                                    {% elseif article.status == "True" %}
+                                        <label style="background-color: #00ce68;" class="badge badge-success">Onaylandı</label>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

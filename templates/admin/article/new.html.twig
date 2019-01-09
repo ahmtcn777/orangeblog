@@ -1,0 +1,21 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Yazı Ekleme{% endblock %}
+
+{% block content %}
+    <div class="col-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yazı Ekleme</h4>
+                {{ include('admin/article/_form.html.twig') }}
+                <script>
+                    ClassicEditor
+                        .create( document.querySelector( '#detail' ) )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+                </script>
+            </div>
+        </div>
+    </div>
+{% endblock %}

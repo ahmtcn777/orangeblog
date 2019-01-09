@@ -1,0 +1,59 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Üyeler{% endblock %}
+
+{% block content %}
+    {{ include('admin/messages.html.twig') }}
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Üyeler</h4>
+                <a href="{{ path('admin_users_new') }}" class="btn btn-outline-primary btn-rounded btn-fw">Yeni Üye Ekle</a>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Type</th>
+                            <th>Status</th>
+                            <th>Görüntüle</th>
+                            <th>Düzenle</th>
+                            <th>Sil</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.id }}</td>
+                                <td>{{ user.name }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{{ user.type }}</td>
+                                <td>{{ user.status }}</td>
+                                <td>
+                                    <a href="{{ path('admin_users_show', {'id': user.id}) }}" class="btn btn-outline-success btn-rounded btn-sm">Görüntüle</a>
+                                </td>
+                                <td>
+                                    <a href="{{ path('admin_users_edit', {'id': user.id}) }}" class="btn btn-outline-info btn-rounded btn-sm">Düzenle</a>
+                                </td>
+                                <td>
+                                    {{ include('admin/users/_delete_form.html.twig') }}
+                                </td>
+                            </tr>
+                        {% else %}
+                            <tr>
+                                <td colspan="7">Kayıt bulunamadı!</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

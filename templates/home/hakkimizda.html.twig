@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Hakkımızda - {{ data[0].title }}{% endblock %}
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }}{% endblock %}
+
+{% block content %}
+    <div class="col-sm-9">
+        <div class="blog-post-area">
+            <h2 class="title text-center">Hakkımızda - {{ data[0].title|raw }}</h2>
+            <div class="single-blog-post">
+                {{ data[0].aboutus|raw }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

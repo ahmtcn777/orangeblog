@@ -1,0 +1,36 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Site Ayaları{% endblock %}
+
+{% block content %}
+    {{ include('admin/messages.html.twig') }}
+    <div class="col-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Site Ayarları</h4>
+                {{ include('admin/setting/_form.html.twig', {'button_label': 'Update'}) }}
+                <script>
+                    ClassicEditor
+                        .create( document.querySelector( '#aboutus' ) )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+                </script>
+                <script>
+                    ClassicEditor
+                        .create( document.querySelector( '#contact' ) )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+                </script>
+                <script>
+                    ClassicEditor
+                        .create( document.querySelector( '#referances' ) )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+                </script>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+<form name="article" method="post">
+    <div id="article">
+        <div>
+            <label for="article_title">Yazı Başlığı</label>
+            <input type="text" class="form-control form-group" id="article_title" name="article[title]"   value="{{ article.title }}" placeholder="title" required>
+        </div>
+
+        <div>
+            <label for="article_description">Kısa Açıklama</label>
+            <input type="text" class="form-control form-group" id="article_description" name="article[description]"  maxlength="255" value="{{ article.description }}" placeholder="description" required>
+        </div>
+        <div>
+            <label for="article_keywords">Anahtar Kelime</label>
+            <input type="text" class="form-control form-group" id="article_keywords" name="article[keywords]"  maxlength="255" value="{{ article.keywords }}" placeholder="keywords" required>
+        </div>
+        <div>
+            <label for="article_status">Status</label>
+            <select type="text" class="form-control form-group" id="article_status" name="article[status]">
+                <option>{{ article.status }}</option>
+                <option>True</option>
+                <option>False</option>
+            </select>
+        </div>
+        <div>
+            <label for="article_userid">userId</label>
+            <input type="text" class="form-control form-group" id="article_userid" name="article[userid]" value="{{ article.userid }}">
+        </div>
+        <div>
+            <label for="article_categoryid">Bulunduğu Kategori</label>
+            <select type="text" class="form-control form-group" id="article_categoryid" name="article[categoryid]" required>
+                {% if article.categoryid != null %}
+                 <option value="{{ article.categoryid }}">{{ catname[0].title }}</option>
+                {% endif %}
+                {% for cat in catlist %}
+                    {% if cat.parentid != 0 %}
+                    <option value="{{ cat.id }}">{{ cat.title }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <div>
+            <label for="article_detail">Detay</label><br>
+            <textarea id="detail" name="article[detail]" rows="10" cols="117">{{ article.detail }}</textarea>
+        </div>
+    </div><br>
+    <button class="btn btn-outline-info btn-rounded btn-sm">Kaydet</button>
+</form>

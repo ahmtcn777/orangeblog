@@ -1,0 +1,32 @@
+
+<form name="user" method="post">
+    <div id="user">
+        <div>
+            <label for="user_name">Ad Soyad</label>
+            <input type="text" class="form-control form-group" id="user_name" name="user[name]" value="{{ user.name }}" placeholder="Ad Soyad" required>
+        </div>
+        <div>
+            <label for="user_email">Email</label>
+            <input type="text" class="form-control form-group" id="user_email" name="user[email]" value="{{ user.email }}" placeholder="Email" required>
+        </div>
+        <div>
+            <label for="user_password">Şifre</label>
+            <input type="password" class="form-control form-group" id="user_password" name="user[password]" value="{{ user.password }}" placeholder="Şifre" required>
+        </div>
+        <div>
+            <label for="user_name">YETKİ</label>
+            <input type="text" class="form-control form-group" id="user_roles" name="user[roles]" value="{{ user.roles[0] }}" placeholder="Yetki" required>
+        </div>
+        <div>
+            <label for="user_status">Status</label>
+            <select type="text" class="form-control form-group" id="user_status" name="user[status]" >
+                {% if user.status!=null %}
+                    <option>{{ user.status }}</option>
+                {% endif %}
+                <option>True</option>
+                <option>False</option>
+            </select>
+        </div>
+    </div>
+    <button class="btn btn-outline-info btn-rounded btn-sm">Kaydet</button>
+</form>

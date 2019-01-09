@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+
+/* =Header (mini mode) and built-ins for inherits
+---------------------------------------------------- */
+
+
+
+#site-description { /* determine exact position of title in minimum screen layout (mini-mode) */
+    font-size: 1em; /* title font size */
+    padding-top: 60px; /* height from top of page */
+    font-weight: 800; /* this changes after sizing */
+    color: #fff; /* color of title text */
+  padding-bottom:.5em;
+}
+
+/* =Body Classes (mini mode)
+------------------------------------------------------ */
+#page {
+  width:320px;
+  position:relative;
+  margin:0 auto;
+}
+#page-head { /* page container for header */
+    background-color:#343837; /* background color */
+    overflow:hidden;
+    position: relative;
+}
+
+/* =Menu (mini mode)
+------------------------------------------------------ */
+#access {
+  width:100%;
+  left:0;
+  right:0;
+  margin-left:0;
+  margin-right:0;
+  display:block;
+  
+}
+#access ul { /* accordion lists */
+    list-style:none; /* remove bullets */
+    margin: 0 auto; /* center and margin */
+    display: block; /* display type block */
+    width:100%; /* stretch to full width of container */
+    overflow:hidden; /* prevent margin wisk */
+}
+#access ul li { /* accordion list items */
+    background-color: #2C8DB7; /* BACKGROUND COLOR */
+    color: #FFF; /* LIST ITEM TEXT COLOR */
+    position: relative; /* set position relative for accordion menu items */
+    float: left; /* float items left */
+    width: 100%; /* set to width of container */
+    border-bottom-width: 1px; /* add a slight border to bottom of menus */
+    border-bottom-style: solid; /* solid line */
+    border-bottom-color: #CCC; /* color of border */
+}
+#access ul li a { /* accordion list item links */
+    color: #FFF; /* LINK TEXT COLOR */  
+    display:block; /* display type block */
+    padding: 16px; /* add padding all around */
+    font-weight: 600; /* increase font weight */
+    text-decoration:none; /* get rid of underline */
+}
+#access li > ul { /* accordion menu items */
+    display:block; /* display menu items on hover */
+    height: 0; /* initially hide menu items */
+    -webkit-transition: all 500ms cubic-bezier(0.250, 0.100, 0.250, 1.000); 
+    -moz-transition: all 500ms cubic-bezier(0.250, 0.100, 0.250, 1.000); 
+    -ms-transition: all 500ms cubic-bezier(0.250, 0.100, 0.250, 1.000); 
+    -o-transition: all 500ms cubic-bezier(0.250, 0.100, 0.250, 1.000); 
+    transition: all 500ms cubic-bezier(0.250, 0.100, 0.250, 1.000); /* ease (default) */
+    background-color:#2C8DB7; /* default background of old default viewport - #A0A0A0 */
+
+}
+#access li:hover > ul { /* accordion menu items - on hover */
+    height:47px; /* set initial height of accordion opening */
+    overflow:visible; /* show overflow beyond set height */
+}
+#access li ul > li a { /* accordion menu item links */
+    background-color:#FEFEFE; /* MENU ITEM LINK BACKGROUND COLOR */
+    color:#000; /* MENU ITEM LINK TEXT COLOR */
+    font-weight:400; /* reset normal font weight */
+    padding: 12px; /* repad menu item links */
+}
+#access li ul > li:nth-of-type(odd) a { /* accordion menu item links (odd) */
+    background-color:#DDF; /* MENU ITEM LINK BACKGROUND COLOR - ODD */
+}
+#access li ul > li a:hover { /* accordion menu item links - on hover */
+    background-color:#fc0; /* MENU ITEM LINK BACKGROUND COLOR - ON HOVER */
+    color:#000; /* MENU ITEM LINK TEXT COLOR - ON HOVER */
+    font-weight:600; /* increase font weight */
+}

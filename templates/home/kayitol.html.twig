@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block keywords %} {{ data[0].keywords }} {% endblock %}
+{% block description %} {{ data[0].description }}{% endblock %}
+{% block title %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {{ app.user.name }} - {{ data[0].title }}
+    {% else %}
+        Kayıt ol - {{ data[0].title }}
+    {% endif %}
+{% endblock %}
+{% block sidebar %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {{  include ('home/_usersidebar.html.twig') }}
+    {% endif %}
+{% endblock %}
+{% block content %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="col-sm-9">
+            <div class="blog-post-area">
+                <h2 class="title text-center">HOŞGELDİNİZ</h2>
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Ad Soyad</th>
+                                    <th>E-mail</th>
+                                    <th>Üyelik Türü</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>{{ app.user.name }}</td>
+                                    <td>{{ app.user.email }}</td>
+                                    <td>
+                                        {% if app.user.roles[0] == 'ROLE_ADMIN' %}
+                                            ADMIN
+                                        {% elseif app.user.roles[0] == 'ROLE_USER' %}
+                                            Normal Üye
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+
+        {{ include('messages.html.twig') }}
+        <form name="user" method="post">
+        <div class="col-sm-4 col-sm-offset-1">
+            <div class="login-form"><!--login form-->
+                <h2>Kayıt Ol!</h2>
+                <form action="#">
+                    <input type="text" name="user[name]" id="user_name" placeholder="Ad Soyad" class="form-control" value="{{ user.name }}" required autofocus>
+                    <br>
+                    <input type="email" name="user[email]" id="user_email" placeholder="Email Address" class="form-control" value="{{ user.email }}" required autofocus>
+                    <br>
+                    <input type="password" name="user[password]" id="user_password" class="form-control" placeholder="Password" required>
+                    <input type="hidden" name="user[roles]" id="user_roles" class="form-control" value="sssss">
+                    <input type="hidden" name="user[status]" id="user_status" class="form-control" value="True">
+                    <button type="submit" class="btn btn-lg btn-primary">Kayıt ol</button>
+                    <br>
+                    <br>
+                    <br>
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('kayitol-form') }}"
+                    >
+                </form>
+            </div><!--/login form-->
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %} {% endblock %}</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Star Admin Free Bootstrap Admin Dashboard Template</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="{{ asset('admin') }}/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="{{ asset('admin') }}/vendors/css/vendor.bundle.addons.css">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{ asset('admin') }}/css/style.css">
+    <!-- endinject -->
+    <link rel="shortcut icon" href="{{ asset('admin') }}/images/favicon.png" />
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openWin(windowURL,windowName,windowFeatures) {
+            window.open(windowURL,windowName,windowFeatures);
+        }
+    </SCRIPT>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
+            <a class="navbar-brand brand-logo" href="/admin">
+                <img src="{{ asset('admin') }}/images/logo.svg" alt="logo" />
+            </a>
+            <a class="navbar-brand brand-logo-mini" href="/admin">
+                <img src="{{ asset('admin') }}/images/logo-mini.svg" alt="logo" />
+            </a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center">
+            <ul class="navbar-nav navbar-nav-right">
+                <li class="nav-item dropdown d-none d-xl-inline-block">
+                    <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                        <span class="profile-text">Merhaba, {{ app.user.name }}!</span>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown"><br>
+                        <a href="{{ path('app_logout') }}" class="dropdown-item">
+                            Çıkış Yap
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <span class="mdi mdi-menu"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin">
+                        <i class="menu-icon mdi mdi-television"></i>
+                        <span class="menu-title">Anasayfa</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin_user_index') }}">
+                        <i class="menu-icon mdi mdi-account-outline"></i>
+                        <span class="menu-title">Üyeler</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/category">
+                        <i class="menu-icon mdi mdi-arrange-bring-forward"></i>
+                        <span class="menu-title">Kategoriler</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/article">
+                        <i class="menu-icon mdi mdi-clipboard-text"></i>
+                        <span class="menu-title">Yazılar</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/setting">
+                        <i class="menu-icon mdi mdi-settings"></i>
+                        <span class="menu-title">Site Ayarları</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/messages">
+                        <i class="menu-icon mdi mdi-message-processing"></i>
+                        <span class="menu-title">Mesajlar</span>
+                    </a>
+                </li>
+
+
+            </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                {% block content %} {% endblock %}
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="container-fluid clearfix">
+            <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright aaa© 2018
+              <a href="http://www.bootstrapdash.com/" target="_blank">Bootstrapdash</a>. All rights reserved.</span>
+                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with
+              <i class="mdi mdi-heart text-danger"></i>
+            </span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+
+
+
+
+
+<!==========SCRIPTS=========!>
+<!-- plugins:js -->
+<script src="{{ asset('admin') }}/vendors/js/vendor.bundle.base.js"></script>
+<script src="{{ asset('admin') }}/vendors/js/vendor.bundle.addons.js"></script>
+<!-- endinject -->
+<!-- Plugin js for this page-->
+<!-- End plugin js for this page-->
+<!-- inject:js -->
+<script src="{{ asset('admin') }}/js/off-canvas.js"></script>
+<script src="{{ asset('admin') }}/js/misc.js"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="{{ asset('admin') }}/js/dashboard.js"></script>
+<!-- End custom js for this page-->
+</body>
+
+</html>

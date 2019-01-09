@@ -1,0 +1,70 @@
+
+<h2 class="title text-center">EN YENİ BLOGLAR</h2>
+<section id="slider"><!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        <li data-target="#slider-carousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-6">
+                                <h1><span>{{ sliders[0].title }}</span></h1>
+                                <h2>{% for user in users %}
+                                        {% if sliders[0].userid == user.id %}
+                                            {{ user.name }}
+                                        {% endif %}
+                                    {% endfor %}{{ sliders[0].updated_at }}</h2>
+                                <a  class="btn btn-default get" href="{{ path('article_detail', {'id': sliders[0].id}) }}">Detay</a>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="{{ asset('uploads') }}/images/{{ sliders[0].image }}" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <h1><span>{{ sliders[1].title }}</span></h1>
+                                <h2>{% for user in users %}
+                                        {% if sliders[1].userid == user.id %}
+                                            {{ user.name }}
+                                        {% endif %}
+                                    {% endfor %}{{ sliders[1].updated_at }}</h2>
+                                <a  class="btn btn-default get" href="{{ path('article_detail', {'id': sliders[1].id}) }}">Detay</a>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="{{ asset('uploads') }}/images/{{ sliders[1].image }}" class="girl img-responsive" alt="" />
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <h1><span>{{ sliders[2].title }}</span></h1>
+                                <h2>{% for user in users %}
+                                        {% if sliders[2].userid == user.id %}
+                                            {{ user.name }}
+                                        {% endif %}
+                                    {% endfor %}{{ sliders[2].updated_at }}</h2>
+                                <a  class="btn btn-default get" href="{{ path('article_detail', {'id': sliders[2].id}) }}">Detay</a>
+                            </div>
+                            <div class="col-sm-6">
+                                <img src="{{ asset('uploads') }}/images/{{ sliders[2].image }}" class="girl img-responsive" alt="" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!--/slider-->

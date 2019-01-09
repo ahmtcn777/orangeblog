@@ -1,0 +1,35 @@
+<form name="users" method="post">
+    <div id="users">
+        <div>
+            <label for="users_name">Ad Soyad</label>
+            <input type="text" class="form-control form-group" id="users_name" name="users[name]"  maxlength="30" value="{{ user.name }}" placeholder="Ad Soyad" required>
+        </div>
+        <div>
+            <label for="users_email">Email</label>
+            <input type="text" class="form-control form-group" id="users_email" name="users[email]" maxlength="50" value="{{ user.email }}" placeholder="Email" required>
+        </div>
+        <div>
+            <label for="users_password">Şifre</label>
+            <input type="password" class="form-control form-group" id="users_password" name="users[password]" maxlength="150" value="{{ user.password }}" placeholder="Şifre" required>
+        </div>
+        <div>
+            <label for="users_type">Tür</label>
+            <select type="text" class="form-control form-group" id="users_type" name="users[type]" maxlength="20">
+                <option>{{ user.type }}</option>
+                <option>Admin</option>
+                <option>Üye</option>
+            </select>
+        </div>
+        <div>
+            <label for="users_status">Status</label>
+            <select type="text" class="form-control form-group" id="users_status" name="users[status]" maxlength="15">
+                {% if user.status!=null %}
+                    <option>{{ user.status }}</option>
+                {% endif %}
+                <option>Aktif</option>
+                <option>Pasif</option>
+            </select>
+        </div>
+    </div>
+    <button class="btn btn-outline-info btn-rounded btn-sm">Kaydet</button>
+</form>

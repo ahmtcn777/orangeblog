@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <meta http-equiv="refresh" content="0; url={{ path('userpanel') }}" />
+    {% endif %}
+{% endblock %}
+{% block title %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        {{ app.user.name }} - {{ data[0].title }}
+    {% else %}
+        Giriş yap - {{ data[0].title }}
+    {% endif %}
+{% endblock %}
+{% block content %}
+        <div class="col-sm-9">
+            <div class="blog-post-area">
+                {{ include('messages.html.twig') }}
+                <form method="post">
+                    {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                    {% endif %}
+
+                    <div class="col-sm-4 col-sm-offset-1">
+                        <div class="login-form"><!--login form-->
+                            <h2>Hesabınıza giriş yapın</h2>
+                            <form action="#">
+                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" placeholder="Email Address" class="form-control" required autofocus>
+                                <br>
+                                <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                                <button type="submit" class="btn btn-lg btn-primary">Giriş</button>
+                                <br>
+                                <br>
+                                <br>
+                                <input type="hidden" name="_csrf_token"
+                                       value="{{ csrf_token('authenticate') }}"
+                                >
+                            </form>
+                        </div><!--/login form-->
+                    </div>
+                    <div class="col-sm-1">
+                        <a href="{{ path('kayitol') }}"><h2 class="or">KAYIT</h2></a>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+{% endblock %}

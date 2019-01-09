@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+    {% block title %}
+        {{ app.user.name }} - {{ data[0].title }}
+    {% endblock %}
+    {% block sidebar %}
+        {{  include ('home/_usersidebar.html.twig') }}
+    {% endblock %}
+{% block stylesheets %}
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.1.1/classic/ckeditor.js"></script>
+{% endblock %}
+    {% block content %}
+<div class="col-sm-9">
+    <div class="blog-post-area">
+        <h2 class="title text-center">Yeni Blog Ekleme</h2>
+        <form method="post">
+            <input type="text" name="title" id="title" placeholder="Başlık" class="form-control" required autofocus>
+            <br>
+            <input type="text" name="decription" id="decription" placeholder="Kısa Açıklama" class="form-control" required autofocus>
+            <br>
+            <input type="text" name="keywords" id="keywords" placeholder="keywords" class="form-control" required autofocus>
+            <br>
+            <select type="text" class="form-control form-group" id="categoryid" name="categoryid" required>
+                {% for cat in catlist %}
+                    {% if cat.parentid != 0 %}
+                        <option value="{{ cat.id }}">{{ cat.title }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+            <div>
+                <label for="detail">Detay</label><br>
+                <textarea id="detail" name="detail" rows="10" cols="117"></textarea>
+            </div>
+            <input type="hidden" name="status" id="status" class="form-control" value="False" required autofocus>
+            <button type="submit" class="btn btn-lg btn-primary">Kaydet</button>
+        </form>
+    </div>
+</div>
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#detail' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
+    {% endblock %}

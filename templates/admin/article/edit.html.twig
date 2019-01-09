@@ -1,0 +1,23 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Yazı Düzenleme{% endblock %}
+
+{% block content %}
+    {{ include('admin/messages.html.twig') }}
+    <div class="col-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yazı Düzenleme</h4>
+                {{ include('admin/article/_form.html.twig', {'button_label': 'Update'}) }}<br>
+                {{ include('admin/article/_delete_form.html.twig') }}
+                <script>
+                    ClassicEditor
+                        .create( document.querySelector( '#detail' ) )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+                </script>
+            </div>
+        </div>
+    </div>
+{% endblock %}

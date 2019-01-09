@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ catdata[0].title }} - {{ data[0].title }}{% endblock %}
+{% block keywords %} {{ catdata[0].keywords }} {% endblock %}
+{% block description %} {{ catdata[0].description }}{% endblock %}
+
+{% block sidebar %} {% include 'home/_sidebar.html.twig' %} {% endblock %}
+{% block content %}
+    <div class="col-sm-9">
+        <div class="blog-post-area">
+            <h2 class="title text-center">{{ catdata[0].title }}</h2>
+            {% for art in articles %}
+                <div class="single-blog-post">
+                    <h3>{{ art.title }}</h3>
+
+                    <a href="">
+                        <img src="{{ asset('uploads') }}/images/{{ art.image }}" alt="">
+                    </a>
+                    <div class="post-meta">
+                        <ul>
+                            <li><i class="fa fa-user"></i>
+                                {% for user in users %}
+                                    {% if art.userid == user.id %}
+                                        {{ user.name }}
+                                    {% endif %}
+                                {% endfor %}
+                            </li>
+                            <li><i class="fa fa-calendar"></i> {{ art.updated_at }}</li>
+                        </ul>
+                    </div>
+                    <a  class="btn btn-primary btn-block" href="{{ path('article_detail', {'id': art.id}) }}">Detay</a>
+                </div><hr>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

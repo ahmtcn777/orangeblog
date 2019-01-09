@@ -1,0 +1,78 @@
+{{ include('admin/messages.html.twig') }}
+
+
+<form name="setting" method="post">
+    <div id="setting">
+        <div>
+            <label for="setting_title">Site Adı</label>
+            <input type="text" class="form-control form-group" id="setting_title" name="setting[title]"  maxlength="30" value="{{ setting.title }}" placeholder="title" >
+        </div>
+
+        <div>
+            <label for="setting_description">Kısa Açıklama</label>
+            <input type="text" class="form-control form-group" id="setting_description" name="setting[description]"  maxlength="255" value="{{ setting.description }}" placeholder="description" >
+        </div>
+        <div>
+            <label for="setting_keywords">Anahtar Kelime</label>
+            <input type="text" class="form-control form-group" id="setting_keywords" name="setting[keywords]"  maxlength="255" value="{{ setting.keywords }}" placeholder="keywords" >
+        </div>
+        <div>
+            <label for="setting_company">Firma Adı</label>
+            <input type="text" class="form-control form-group" id="setting_company" name="setting[company]"  maxlength="255" value="{{ setting.company }}" placeholder="company" >
+        </div>
+        <div>
+            <label for="setting_address">Adresi</label>
+            <input type="text" class="form-control form-group" id="setting_address" name="setting[address]"  maxlength="255" value="{{ setting.address }}" placeholder="adres" >
+        </div>
+        <div>
+            <label for="setting_phone">Phone</label>
+            <input type="text" class="form-control form-group" id="setting_phone" name="setting[phone]"  maxlength="15" value="{{ setting.phone }}" placeholder="Telefon" >
+        </div>
+        <div>
+            <label for="setting_email">Email</label>
+            <input type="text" class="form-control form-group" id="setting_email" name="setting[email]"  maxlength="50" value="{{ setting.email }}" placeholder="email" >
+        </div>
+        <div>
+            <label for="setting_smtpserver">SMTP Server</label>
+            <input type="text" class="form-control form-group" id="setting_smtpserver" name="setting[smtpserver]"  maxlength="100" value="{{ setting.smtpserver }}" placeholder="smtpserver" >
+        </div>
+        <div>
+            <label for="setting_smtpemail">SMTP Email</label>
+            <input type="text" class="form-control form-group" id="setting_smtpemail" name="setting[smtpemail]"  maxlength="50" value="{{ setting.smtpemail }}" placeholder="smtpemail" >
+        </div>
+        <div>
+            <label for="setting_smtppassword">SMTP Password</label>
+            <input type="password" class="form-control form-group" id="setting_smtppassword" name="setting[smtppassword]"  maxlength="20" value="{{ setting.smtppassword }}" placeholder="smtppassword" >
+        </div>
+        <div>
+            <label for="setting_smtpport">SMTP Port</label>
+            <input type="text" class="form-control form-group" id="setting_smtpport" name="setting[smtpport]"  maxlength="11" value="{{ setting.smtpport }}" placeholder="smtpport" >
+        </div>
+        <div>
+            <label for="setting_aboutus">Hakkımızda</label>
+            <textarea id="aboutus" name="setting[aboutus]" rows="10" cols="117">{{ setting.aboutus }}</textarea><hr>
+        </div>
+        <div>
+            <label for="setting_contact">İletişim</label>
+            <textarea id="contact" name="setting[contact]" rows="10" cols="117">{{ setting.contact }}</textarea><hr>
+        </div>
+        <div>
+            <label for="setting_referances">Referanslar</label>
+            <textarea id="referances" name="setting[referances]" rows="10" cols="117">{{ setting.referances }}</textarea><hr>
+        </div>
+        <div>
+            <label for="setting_status">Status</label>
+            <select type="text" class="form-control form-group" id="setting_status" name="setting[status]">
+                {% if setting.status!=null %}
+                <option>{{ setting.status }}</option>
+                {% endif %}
+                <option>Aktif</option>
+                <option>Pasif</option>
+            </select>
+        </div>
+
+
+
+    </div><br>
+    <button class="btn btn-outline-info btn-rounded btn-sm">Kaydet</button>
+</form>

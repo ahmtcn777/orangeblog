@@ -1,0 +1,92 @@
+{% block stylesheets %}
+    <style>
+        ul#menu-v, #menu-v ul
+        {
+            width: 80%; /* Main Menu width */
+            border-radius:  40px/10px;
+            border:1px solid #FF9900;
+            list-style:none;
+            margin: auto auto auto auto;
+            padding:0;
+            z-index:9;
+        }
+
+        #menu-v li
+        {
+
+            margin:0;padding:0;
+            position:relative;
+            background-color:#FFFFFF;
+            transition:background 0.5s;
+        }
+        #menu-v li:hover
+        {
+            background-color:#FF9900;
+        }
+
+        #menu-v a
+        {
+            border-radius:  40px/1px;
+            border-top:1px solid #FF9900;
+            display:block;
+            color:#444444;
+            text-decoration:none;
+            text-align: center;
+            line-height:26px;
+            position:relative;
+        }
+
+        #menu-v li:first-child a
+        {
+            border-top:0;
+        }
+
+        #menu-v a.arrow::after{
+            content:'';
+            position:absolute;
+            display:inline;
+            top:50%;
+            margin-top:-4px;
+            right:8px;
+            border-width:4px;
+            border-style:solid;
+            border-color:transparent transparent transparent black;
+            transition:border-color 0.5s;
+        }
+
+        #menu-v li a.arrow:hover::after
+        {
+            border-color:transparent transparent transparent red;
+        }
+
+        /*Sub level menu items
+        ---------------------------------------*/
+        #menu-v li ul
+        {
+            min-width:180px; /* Sub level menu min width */
+            position:absolute;
+            display:none;
+            left:100%;
+            top:0;
+        }
+
+        #menu-v li:hover > ul
+        {
+            display:block;
+        }
+    </style>
+{% endblock %}
+
+
+<!=============== END CSS AREA ===============>
+<div class="col-sm-3">
+    <div class="left-sidebar panel-group category-products">
+        <h2>Üye Paneli</h2>
+        <ul id="menu-v">
+            <li><a href="{{ path('userpanel') }}">Hesabım</a></li>
+            <li><a href="{{ path('userpanel_edit') }}">Düzenle</a></li>
+            <li><a href="{{ path('bloglarim') }}"> Bloglarım</a></li>
+            <li><a href="{{ path('app_logout') }}"> Çıkış</a></li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Kategori Ekleme{% endblock %}
+
+{% block content %}
+    <div class="col-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Kategori Ekleme</h4>
+                {{ include('admin/category/_form.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

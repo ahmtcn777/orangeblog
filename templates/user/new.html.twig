@@ -1,0 +1,14 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Üye Ekleme{% endblock %}
+
+{% block content %}
+    <div class="col-12 stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Üye Ekleme</h4>
+                {{ include('user/_form.html.twig') }}<br>
+            </div>
+        </div>
+    </div>
+{% endblock %}

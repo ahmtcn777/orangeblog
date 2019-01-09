@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ app.user.name }} - {{ data[0].title }}{% endblock %}
+{% block sidebar %}
+    {{  include ('home/_usersidebar.html.twig') }}
+{% endblock %}
+{% block content %}
+
+    <div class="col-sm-9">
+        <div class="blog-post-area">
+            <h2 class="title text-center">HOŞGELDİNİZ</h2>
+
+            {{ include ('messages.html.twig') }}
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Ad Soyad</th>
+                                <th>E-mail</th>
+                                <th>Üyelik Türü</th>
+                                {% if app.user.status == "True" %}
+                                <th>Üyelik Durumu</th>
+                                {% endif %}
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>{{ app.user.name }}</td>
+                                <td>{{ app.user.email }}</td>
+                                <td>
+                                    {% if app.user.roles[0] == 'ROLE_ADMIN' %}
+                                        ADMIN
+                                    {% elseif app.user.roles[0] == 'ROLE_USER' %}
+                                        Normal Üye
+                                    {% endif %}
+                                </td>
+                                {% if app.user.status == "True" %}
+                                <td><label style="background-color: #00ce68;" class="badge badge-success">Aktif</label></td>
+                                {% endif %}
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

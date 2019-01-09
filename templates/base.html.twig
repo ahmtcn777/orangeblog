@@ -1,0 +1,240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="tr">
+<head>
+    <title>{% block title %} aaa {% endblock %}</title>
+    <meta name="keywords" content="{% block keywords %} {% endblock %}">
+    <meta name="description" content="{% block description %} {% endblock %}">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="">
+    <title>Blog | E-Shopper</title>
+    <link href="{{ asset('css') }}/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('css') }}/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ asset('css') }}/prettyPhoto.css" rel="stylesheet">
+    <link href="{{ asset('css') }}/price-range.css" rel="stylesheet">
+    <link href="{{ asset('css') }}/animate.css" rel="stylesheet">
+    <link href="{{ asset('css') }}/main.css" rel="stylesheet">
+    <link href="{{ asset('css') }}/responsive.css" rel="stylesheet">
+    <!--[if lt IE 9]>
+    <script src="{{ asset('js') }}/html5shiv.js"></script>
+    <script src="{{ asset('js') }}/respond.min.js"></script>
+    <![endif]-->
+    <link rel="shortcut icon" href="/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('images') }}/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('images') }}/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('images') }}/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('images') }}/ico/apple-touch-icon-57-precomposed.png">
+    <SCRIPT language="JavaScript" type="text/javascript">
+        function openWin(windowURL,windowName,windowFeatures) {
+            window.open(windowURL,windowName,windowFeatures);
+        }
+    </SCRIPT>
+    {% block stylesheets %} {% endblock %}
+</head>
+
+<body>
+<!====================HEADER=====================>
+<header id="header"><!--header-->
+    <div class="header_top"><!--header_top-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="contactinfo">
+                        <ul class="nav nav-pills">
+                            <li><a ><i class="fa fa-phone"></i> {{ data[0].phone }}</a></li>
+                            <li><a ><i class="fa fa-envelope"></i> {{ data[0].email }}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="social-icons pull-right">
+                        <ul class="nav navbar-nav">
+                            <li><a href="https://www.facebook.com/ahmetcan.yuce.7" target="_blank"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="https://twitter.com/Ahmtcn777" target="_blank"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="https://www.linkedin.com/in/ahmet-can-y%C3%BCce-56232a146/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header_top-->
+
+    <div class="header-middle"><!--header-middle-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="companyinfo2">
+                        <a href="{{ path('home') }}"><h2><span>orange</span>blog</h2></a>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <div class="shop-menu pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{{ path('add_blog') }}"><i class="fa fa-plus"></i>Yeni Blog Oluştur</a></li>
+                                <li><a href="{{ path('userpanel') }}"><i class="fa fa-user"></i>Hesabım</a></li>
+                                <li><a href="{{ path('app_logout') }}"><i class="fa fa-lock"></i>Çıkış Yap</a></li>
+                            </ul>
+                        </div>
+                    {% else %}
+                        <div class="shop-menu pull-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="{{ path('app_login') }}"><i class="fa fa-lock"></i> Giriş yap</a></li>
+                                <li><a href="{{ path('kayitol') }}"><i class="fa fa-crosshairs"></i> Kayıt ol</a></li>
+                            </ul>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div><!--/header-middle-->
+
+    <div class="header-bottom"><!--header-bottom-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+
+                    <div class="mainmenu pull-left">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                            <li><a href="/">Anasayfa</a></li>
+                            <li><a href="/hakkimizda">Hakkımızda</a></li>
+                            <li><a href="/iletisim">İletişim</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="search_box pull-right">
+                        <input type="text" placeholder="Search"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header-bottom-->
+</header><!--/header-->
+<!=================== END HEADER ================>
+<!================== CONTENT AREA=================>
+{% block slider %} {% endblock %}
+<section>
+    <div class="container">
+        <div class="row">
+            {% block sidebar%} {% endblock %}
+            {% block content %} {% endblock %}
+
+        </div>
+    </div>
+</section>
+<!=============== END CONTENT AREA ===============>
+<!================== FOOTER AREA=================>
+
+<footer id="footer"><!--Footer-->
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="companyinfo">
+                        <h2><span>orange</span>blog</h2>
+                        <p>{{ data[0].description }}</p>
+                    </div>
+                </div>
+                <div class="col-sm-7">
+                    <div class="col-sm-3">
+                        <div class="video-gallery text-center">
+                            <a href="https://www.youtube.com/watch?v=63M38xfMXYI">
+                                <div class="iframe-img">
+                                    <img src="https://i.ytimg.com/vi/63M38xfMXYI/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLDl-US21U25LvVZ022y8la2lRs7lw" alt="" />
+                                </div>
+                                <div class="overlay-icon">
+                                    <i class="fa fa-play-circle-o"></i>
+                                </div>
+                            </a>
+                            <p>Oyunu Kim Kazanır? - TEDx</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="video-gallery text-center">
+                            <a href="https://www.youtube.com/watch?v=R8K3vZ_9wt0&t=24s">
+                                <div class="iframe-img">
+                                    <img src="https://i.ytimg.com/vi/R8K3vZ_9wt0/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLCYt0MBkO3Qcu-Ivml5TDKKGKbHmw" alt="" />
+                                </div>
+                                <div class="overlay-icon">
+                                    <i class="fa fa-play-circle-o"></i>
+                                </div>
+                            </a>
+                            <p>Ya Mağlubiyetin Günahını Alıyorsak? - TEDx</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="video-gallery text-center">
+                            <a href="https://www.youtube.com/watch?v=XkbDx80c4O8">
+                                <div class="iframe-img">
+                                    <img src="https://i.ytimg.com/vi/XkbDx80c4O8/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLCKPfNtGeI9k6tlW4lCBvDpurPuXg" alt="" />
+                                </div>
+                                <div class="overlay-icon">
+                                    <i class="fa fa-play-circle-o"></i>
+                                </div>
+                            </a>
+                            <p>Kararlarımızı Nasıl Veriyoruz? - TEDx</p>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="video-gallery text-center">
+                            <a href="https://www.youtube.com/watch?v=P3sSwQ6iw9I">
+                                <div class="iframe-img">
+                                    <img src="https://i.ytimg.com/vi/P3sSwQ6iw9I/hqdefault.jpg?sqp=-oaymwEZCPYBEIoBSFXyq4qpAwsIARUAAIhCGAFwAQ==&rs=AOn4CLCZ8d3rg0et5nV5o4cC7aWQXCTtuQ" alt="" />
+                                </div>
+                                <div class="overlay-icon">
+                                    <i class="fa fa-play-circle-o"></i>
+                                </div>
+                            </a>
+                            <p>Sence Ben Normal miyim? - TEDx</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="address">
+                        <img src="/images/home/map.png" alt="" />
+                        <p>{{ data[0].address }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <p class="pull-left">Copyright © 2018 ORANGE BLOG All rights reserved.</p>
+                <p class="pull-right">Designed by <span><a target="_blank" href="https://www.instagram.com/ahmtcn777/">Ahmet Can YÜCE</a></span></p>
+            </div>
+        </div>
+    </div>
+
+</footer><!--/Footer-->
+
+
+
+
+<!=============== END FOOTER AREA ===============>
+<!================== SCRIPTS ====================>
+<script src="/js/jquery.js"></script>
+<script src="/js/price-range.js"></script>
+<script src="/js/jquery.scrollUp.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.prettyPhoto.js"></script>
+<script src="/js/main.js"></script>
+<!================ END SCRIPTS ==================>
+</body>
+</html>

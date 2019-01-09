@@ -1,0 +1,41 @@
+<form name="category" method="post">
+    <div id="category">
+        <div>
+            <label for="category_parentid">Üst Kategori</label>
+            <select type="text" class="form-control form-group" id="category_parentid" name="category[parentid]">
+                {% if category.parentid!=0 %}
+                    <option value="{{ category.parentid }}">{{ catname.title }}</option>
+                {% else %}
+                    <option value="0">Ana Kategori</option>
+                {% endif %}
+                <option value="0">Ana Kategori</option>
+                {% for cat in catlist %}
+                    <option value="{{ cat.id }}">{{ cat.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="category_title">Kategori Adı</label>
+            <input type="text" class="form-control form-group" id="category_title" name="category[title]"  maxlength="30" value="{{ category.title }}" placeholder="title" required>
+        </div>
+        <div>
+            <label for="category_keywords">Anahtar Kelime</label>
+            <input type="text" class="form-control form-group" id="category_keywords" name="category[keywords]"  value="{{ category.keywords }}" placeholder="keywords" required>
+        </div>
+        <div>
+            <label for="category_description">Kısa Açıklama</label>
+            <input type="text" class="form-control form-group" id="category_description" name="category[description]"  value="{{ category.description }}" placeholder="description" required>
+        </div>
+        <div>
+            <label for="category_status">Status</label>
+            <select type="text" class="form-control form-group" id="category_status" name="category[status]">
+                {% if category.status!=null %}
+                    <option>{{ category.status }}</option>
+                {% endif %}
+                <option>True</option>
+                <option>False</option>
+            </select>
+        </div>
+    </div>
+    <button class="btn btn-outline-info btn-rounded btn-sm">Kaydet</button>
+</form>

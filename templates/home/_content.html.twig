@@ -1,0 +1,33 @@
+<div class="col-sm-9">
+    <div class="blog-post-area">
+        <h2 class="title text-center">Latest From our Blog</h2>
+        {% for post in posts %}
+        <div class="single-blog-post">
+            <h3>{{ post.title }}</h3>
+            <div class="post-meta">
+                <ul>
+                    <li><i class="fa fa-user"></i> {% for user in users %}
+                            {% if post.userid == user.id %}
+                                {{ user.name }}
+                            {% endif %}
+                        {% endfor %}</li>
+                    <li><i class="fa fa-calendar"></i> {{ post.updated_at }}</li>
+                </ul>
+
+            </div>
+            <a href="">
+                <img src="{{ asset('uploads') }}/images/{{ post.image }}" alt="">
+            </a>
+           <a  class="btn btn-default get btn-block" href="{{ path('article_detail', {'id': post.id}) }}">Detay</a>
+        </div>
+        {% endfor %}
+        <div class="pagination-area">
+            <ul class="pagination">
+                <li><a href="" class="active">1</a></li>
+                <li><a href="">2</a></li>
+                <li><a href="">3</a></li>
+                <li><a href=""><i class="fa fa-angle-double-right"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>

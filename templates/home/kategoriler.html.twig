@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ catdata[0].title }} - {{ data[0].title }}{% endblock %}
+{% block keywords %} {{ catdata[0].keywords }} {% endblock %}
+{% block description %} {{ catdata[0].description }}{% endblock %}
+
+{% block sidebar %} {% include 'home/_sidebar.html.twig' %} {% endblock %}
+{% block content %}
+    <div class="col-sm-9">
+        <div class="blog-post-area">
+            <h2 class="title text-center">{{ catdata[0].title }}</h2>
+            {% for catalt in catlist %}
+                <a href="/category/{{ catalt.id }}"><h2 class="title text-center">{{ catalt.title }}</h2></a>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

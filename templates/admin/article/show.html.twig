@@ -1,0 +1,63 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Yazı Detay{% endblock %}
+
+{% block content %}
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Yazı Detay</h4>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ article.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Title</th>
+                            <td>{{ article.title }}</td>
+                        </tr>
+                        <tr>
+                            <th>Detail</th>
+                            <td>{{ article.detail|raw }}</td>
+                        </tr>
+                        <tr>
+                            <th>Image</th>
+                            <td>{{ article.image }}</td>
+                        </tr>
+                        <tr>
+                            <th>Url</th>
+                            <td>{{ article.url }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ article.description }}</td>
+                        </tr>
+                        <tr>
+                            <th>Keywords</th>
+                            <td>{{ article.keywords }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>{{ article.status }}</td>
+                        </tr>
+                        <tr>
+                            <th>Userid</th>
+                            <td>{{ article.userid }}</td>
+                        </tr>
+                        <tr>
+                            <th>Categoryid</th>
+                            <td>{{ article.categoryid }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="{{ path('admin_article_edit', {'id': article.id}) }}" class="btn btn-block btn-outline-info btn-rounded btn-sm">Düzenle</a><br>
+                    {% if article.status == "False" %}
+                    <a href="{{ path('admin_article_accept', {'id': article.id}) }}" class="btn btn-block btn-outline-info btn-rounded btn-sm">Onayla</a><br>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

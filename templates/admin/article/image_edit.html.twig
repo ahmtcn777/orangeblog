@@ -1,0 +1,17 @@
+
+{% block title %}Yazı Resmi Düzenleme{% endblock %}
+
+{% block body %}
+    <h1>{{ article.title }}</h1>
+
+    <form action="{{ path('admin_article_iupdate',{'id': id}) }}" method="post" enctype="multipart/form-data">
+        Select image to upload:
+        <input name="productid" value="{{ id }}" type="number" readonly>
+        <input type="file" name="imagename" id="fileToUpload">
+        <input type="submit" value="Upload Image" name="submit">
+    </form>
+
+    {% if article.image != null %}
+        <img src="{{ asset('uploads') }}/images/{{ article.image }}" height="250" width="250">
+    {% endif %}
+{% endblock %}
